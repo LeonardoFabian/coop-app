@@ -1,15 +1,14 @@
-# coopmt_app
+# CoopApp (Flutter)
 
-A new Flutter project.
+Aplicación para Cooperativas desarrollada en Flutter.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Para más detalles acerca de esta aplicación, visita el apartado Aplicaciones de mi sitio web:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Leonardo Fabian](https://leonardofabian.com)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
