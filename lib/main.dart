@@ -1,105 +1,99 @@
+import 'package:coopmt_app/ui/shared/global/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'package:coopmt_app/helpers/dialogs.dart';
+// import 'package:coopmt_app/pages/auth.dart';
+import 'package:coopmt_app/router/routes.dart';
+import 'package:coopmt_app/ui/views/login_view.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(CoopApp());
+// import 'package:coopmt_app/helpers/dialogs.dart';
+
+// void main() => runApp(const AppState());
+
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  await dotenv.load(fileName: '.env');
+  runApp(const AppState());
+}
+
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const CoopApp();
+  }
+}
 
 class CoopApp extends StatelessWidget {
+  const CoopApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color.fromRGBO(48, 138, 64, 1),
-            foregroundColor: Colors.white,
-            title: const Text(
-              'COOPMT',
-              textDirection: TextDirection.ltr,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0),
-            ),
-            actions: <Widget>[
-              IconButton(
-                  icon: const Icon(Icons.add_alert),
-                  tooltip: 'Ver notificaciones',
-                  color: Colors.white,
-                  onPressed: () => print('Abriste tus notificaciones')),
-              IconButton(
-                  icon: const Icon(Icons.menu),
-                  tooltip: 'Abrir menu',
-                  color: Colors.white,
-                  onPressed: () => print('Abriste el menu'))
-            ],
+      // theme: ThemeData(primaryColor: Colors.green, accentColor: Colors.orange),
+      // theme: ThemeData.light(),
+      theme: ThemeData(
+        primaryColor: ColorStyles.primaryColor,
+        primaryColorDark: ColorStyles.primaryColorDark,
+        primaryColorLight: ColorStyles.primaryColorLight,
+        dividerColor: ColorStyles.dividerColor,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+            secondary: ColorStyles.secondaryColor,
+            tertiary: ColorStyles.tertiaryColor,
+            error: ColorStyles.dangerColor),
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(
+              color: ColorStyles.headingColor,
+              fontSize: 23.0,
+              fontWeight: FontWeight.w700),
+          headlineMedium: TextStyle(
+              color: ColorStyles.headingColor,
+              fontSize: 22.0,
+              fontWeight: FontWeight.w700),
+          headlineSmall: TextStyle(
+              color: ColorStyles.headingColor,
+              fontSize: 21.0,
+              fontWeight: FontWeight.w700),
+          titleLarge: TextStyle(
+              color: ColorStyles.bodyColor,
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600),
+          titleMedium: TextStyle(
+              color: ColorStyles.bodyColor,
+              fontSize: 19.0,
+              fontWeight: FontWeight.w600),
+          titleSmall: TextStyle(
+              color: ColorStyles.bodyColor,
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600),
+          bodyLarge: TextStyle(
+            fontSize: 17.0,
+            fontWeight: FontWeight.w400,
+            color: ColorStyles.bodyColor,
           ),
-          body: Builder(
-              builder: (BuildContext context) => SingleChildScrollView(
-                    child: Container(
-                      // width: double.infinity,
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 20.0),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          // color: Color.fromRGBO(48, 138, 64, 1),
-                          border: Border.all(color: Colors.grey, width: 1.0),
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: const [
-                            BoxShadow(
-                                blurRadius: 10.0,
-                                color: const Color.fromRGBO(0, 0, 0, 0.5),
-                                offset: Offset(1.0, 1.0))
-                          ]),
-                      child: Column(
-                        children: <Widget>[
-                          const Text(
-                            'Estos son tus productos',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(0, 0, 0,
-                                  1), // Color.fromRGBO(r, g, b, opacity)
-                            ),
-                          ),
-                          const Text(
-                            'Qué deseas hacer?',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(0, 0, 0,
-                                  1), // Color.fromRGBO(r, g, b, opacity)
-                            ),
-                          ),
-                          const Text(
-                            'Novedades',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(0, 0, 0,
-                                  1), // Color.fromRGBO(r, g, b, opacity)
-                            ),
-                          ),
-                          Image.asset('assets/images/event_img.jpg',
-                              height: 200.0),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: ElevatedButton(
-                              child: const Text('Iniciar sesión'),
-                              onPressed: () => showAlert(context),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ))),
+          bodyMedium: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w400,
+            color: ColorStyles.bodyColor,
+          ),
+          bodySmall: TextStyle(
+            fontSize: 15.0,
+            fontWeight: FontWeight.w400,
+            color: ColorStyles.bodyColor,
+          ),
+        ),
+        brightness: Brightness.light,
+      ),
+      debugShowCheckedModeBanner: false,
+      debugShowMaterialGrid: false,
+      initialRoute: LoginView.id,
+      // routes: {AuthPage.ROUTE: (_) => AuthPage()},
+      routes: customRoutes,
     );
-  }
-
-  showAlert(BuildContext context) {
-    infoDialog(
-        context: context,
-        title: 'Lorem Ipsum',
-        content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at ligula sed erat consequat condimentum. Etiam tellus lorem, pellentesque nec eleifend sit amet, facilisis hendrerit neque.');
   }
 }
