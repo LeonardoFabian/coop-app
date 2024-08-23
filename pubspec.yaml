@@ -50,6 +50,9 @@ dependencies:
   sqflite_common_ffi:
   flutter_dotenv:
   shared_preferences:
+  # flutter_redux: ^0.8.2
+  flutter_redux: ^0.10.0 #https://pub.dev/packages/flutter_redux/
+  redux_thunk: ^0.4.0 #https://pub.dev/packages/redux_thunk/
 
 dev_dependencies:
   flutter_test:
